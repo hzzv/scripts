@@ -113,6 +113,7 @@ def init_names(inputText):
 
 # Read one token, translate it, and relax it
 def process(tokenizer, level, polarity, savePairs, addSpace=False):
+    global hasAbs
     assert level >= 0
     relax = not scriptargs.no_relax_inequality
     t = tokenizer.consume()
@@ -240,7 +241,7 @@ if __name__ == '__main__':
                 elif scriptargs.uninterp_mod_simple:
                     f.write("(define-fun %s ((x Real) (m Real)) Real (ite (and (>= x 0) (< x m)) x (* m (%s x m))))" % (UNINTERP_MOD, UNINTERP_FRAC) + os.linesep)
                 if len(ints) > 0 and not scriptargs.no_int_approx: f.write("(define-fun %s ((x Real)) Bool (or (= x 0) (>= x 1) (<= x (- 1))))" % AXIOM_INT_APPROX + os.linesep)
-                if hasAbs: f.write("(define-fun %s ((x Real)) Bool (ite (>= x 0) x (- x)))" % UNINTERP_ABS + os.linesep)
+                if hasAbs: f.write("(define-fun %s ((x Real)) Real (ite (>= x 0) x (- x)))" % UNINTERP_ABS + os.linesep)
             if i == lastDe + 1:
                 for d in divPairs:
                     f.write("(assert (%s %s %s))" % (AXIOM_FRAC_BOUND, d[0], d[1]) + os.linesep)
