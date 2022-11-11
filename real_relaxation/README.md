@@ -3,7 +3,7 @@ The script `relax.py` transforms a SMT-LIB benchmark from NIA to NRA.
 The script requires Python3 and [pysmt](https://github.com/pysmt/pysmt).
 To set up the environment (you only need to do this once):
 ```
-pipenv install
+pipenv sync
 ```
 
 To run the script:
