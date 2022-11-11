@@ -1,4 +1,5 @@
 The script `relax.py` transforms a SMT-LIB benchmark from NIA to NRA.
+The script assumes that all multiplications have exactly two arguments.
 
 The script requires Python3 and [pysmt](https://github.com/pysmt/pysmt).
 You might need to install [pyenv](https://github.com/pyenv/pyenv#installation).
@@ -18,3 +19,5 @@ Additional options:
 - `--no_int_approx` to avoid adding the `axiom_int_approximation` axiom
 - `--uninterp_mod_simple` to use a simpler definition of `umod`: `umod(x, y) := if 0 <= x < y then x else y*ufrac(x, y)`
 - `--uninterp_mod_simplest` to use the simplest definition of `umod`: `umod(x, y) := y*ufrac(x, y)`
+
+For some input files containing deeply nested expressions or long assertions, you might need to increase the shell stack size (e.g. by `ulimit -S -s hard`).
