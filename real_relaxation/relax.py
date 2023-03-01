@@ -236,7 +236,7 @@ if __name__ == '__main__':
                 f.write("(declare-fun %s (Real Real) Real)" % UNINTERP_FRAC + os.linesep)
                 if len(divPairs):
                     if scriptargs.more_precise_frac:
-                        f.write("(define-fun %s ((d1 Real) (d2 Real)) Bool (and (=> (> d2 0) (and (<= 0.0 (%s d1 d2)) (< (%s d1 d2) (- 1.0 (/ 1 d2))))) (=> (< d2 0) (and (>= 0.0 (%s d1 d2)) (> (%s d1 d2) (- (- 1.0) (/ 1 d2)))))))" % (AXIOM_FRAC_BOUND, UNINTERP_FRAC, UNINTERP_FRAC, UNINTERP_FRAC, UNINTERP_FRAC) + os.linesep)
+                        f.write("(define-fun %s ((d1 Real) (d2 Real)) Bool (and (=> (> d2 0) (and (<= 0.0 (%s d1 d2)) (<= (%s d1 d2) (- 1.0 (/ 1 d2))))) (=> (< d2 0) (and (>= 0.0 (%s d1 d2)) (>= (%s d1 d2) (- (- 1.0) (/ 1 d2)))))))" % (AXIOM_FRAC_BOUND, UNINTERP_FRAC, UNINTERP_FRAC, UNINTERP_FRAC, UNINTERP_FRAC) + os.linesep)
                     else:
                         f.write("(define-fun %s ((d1 Real) (d2 Real)) Bool (and (=> (> d2 0) (and (<= 0.0 (%s d1 d2)) (< (%s d1 d2) 1.0))) (=> (< d2 0) (and (>= 0.0 (%s d1 d2)) (> (%s d1 d2) (- 1.0))))))" % (AXIOM_FRAC_BOUND, UNINTERP_FRAC, UNINTERP_FRAC, UNINTERP_FRAC, UNINTERP_FRAC) + os.linesep)
                     if len(mulPairs) > 0 and not scriptargs.no_frac_zero: f.write("(define-fun %s ((d1 Real) (d2 Real) (m1 Real) (m2 Real) (e Real)) Bool (=> (and (= d1 (* m1 m2)) (or (= d2 m1) (= d2 m2))) (= e 0)))" % AXIOM_FRAC_ZERO + os.linesep)

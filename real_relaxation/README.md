@@ -14,6 +14,7 @@ pipenv run python3 relax.py --input_file nia.smt2 --output_file nra.smt2
 ```
 
 Additional options:
+- `--more_precise_frac` to use a version of the `axiom_frac_bound` using `1-1/y` (`-1-1/y`) as a upper (lower) bound for `ufrax(x, y)`
 - `--no_relax_inequality` to turn off the inequality relaxation
 - `--no_frac_zero` to avoid adding the `axiom_frac_zero` axiom
 - `--no_int_approx` to avoid adding the `axiom_int_approximation` axiom
