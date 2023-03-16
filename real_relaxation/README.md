@@ -1,5 +1,5 @@
 The script `relax.py` transforms a SMT-LIB benchmark from NIA to NRA.
-The script assumes that all multiplications have exactly two arguments.
+The script supports logics `QF_UFDTNIA`, `QF_UFNIA`, and `QF_NIA` in the input, and assumes that all multiplications have exactly two arguments.
 
 The script requires Python3 and [pysmt](https://github.com/pysmt/pysmt).
 You might need to install [pyenv](https://github.com/pyenv/pyenv#installation).
